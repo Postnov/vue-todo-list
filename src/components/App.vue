@@ -9,6 +9,7 @@
             :items="items"
             @onDone="onDone"
             @onImportant="onImportant"
+            @onDelete="onDelete"
         />
         <AddTodo />
     </div>
@@ -44,6 +45,11 @@ export default {
             this.items = this.items.map((el) => {
                 if (el.id === id) el.important = !el.important;
                 return el;
+            })
+        },
+        onDelete(id) {
+            this.items = this.items.filter((el) => {
+                return el.id !== id;
             })
         }
     },

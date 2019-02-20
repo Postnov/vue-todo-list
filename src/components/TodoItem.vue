@@ -11,6 +11,7 @@
             <i class="fa fa-exclamation"></i>
         </button>
         <button
+            @click="$emit('onDelete', item.id)"
             type="button" class="btn btn-outline-danger btn-sm float-right">
             <i class="fa fa-trash-o"></i>
         </button>

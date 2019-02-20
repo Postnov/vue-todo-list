@@ -4,7 +4,8 @@
             <TodoItem
             :item="item"
             @onDone="onDone"
-            @onImportant="onImportant"/>
+            @onImportant="onImportant"
+            @onDelete="onDelete"/>
         </li>
     </ul>
 </template>
@@ -20,6 +21,9 @@ export default {
         },
         onImportant(id) {
             this.$emit('onImportant', id);
+        },
+        onDelete(id) {
+            this.$emit('onDelete', id);
         }
     },
     components: {
