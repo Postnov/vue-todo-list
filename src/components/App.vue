@@ -46,13 +46,17 @@ export default {
             this.items = this.items.map((el) => {
                 if (el.id === id) el.done = !el.done;
                 return el;
-            })
+            });
+
+            this.filterItem(this.filter);
         },
         onImportant(id) {
             this.items = this.items.map((el) => {
                 if (el.id === id) el.important = !el.important;
                 return el;
-            })
+            });
+
+            this.filterItem(this.filter);
         },
         onDelete(id) {
             this.items = this.items.filter((el) => {
@@ -65,7 +69,9 @@ export default {
                 done: false,
                 important: false,
                 id: this.maxId++
-            })
+            });
+
+            this.filterItem(this.filter);
         },
 
         searchItems(query) {
