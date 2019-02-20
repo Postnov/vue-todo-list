@@ -1,13 +1,24 @@
 <template>
-    <form class="add-todo d-flex">
-        <input type="text" class="form-control" placeholder="Enter you task in here" value="">
+    <form class="add-todo d-flex" @submit.prevent="addItem">
+        <input type="text" class="form-control" placeholder="Enter you task in here" v-model="label">
         <button class="btn btn-outline-secondary">Add item</button>
     </form>
 </template>
 
 <script>
     export default {
-        name: 'AddTodo'
+        name: 'AddTodo',
+        data() {
+            return {
+                label: ''
+            }
+        },
+        methods: {
+            addItem() {
+                this.$emit('addItem', this.label);
+                this.label = '';
+            }
+        }
     }
 </script>
 

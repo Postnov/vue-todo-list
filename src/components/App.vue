@@ -11,7 +11,8 @@
             @onImportant="onImportant"
             @onDelete="onDelete"
         />
-        <AddTodo />
+        <AddTodo
+            @addItem="addItem"/>
     </div>
 </template>
 
@@ -50,6 +51,14 @@ export default {
         onDelete(id) {
             this.items = this.items.filter((el) => {
                 return el.id !== id;
+            })
+        },
+        addItem(label) {
+            this.items.push({
+                label,
+                done: false,
+                important: false,
+                id: this.maxId++
             })
         }
     },
