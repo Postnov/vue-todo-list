@@ -1,13 +1,14 @@
 <template>
     <div class="app-header d-flex">
-        <h1>My todo list</h1>
+        <h1>{{ nameApp }}</h1>
         <h2>3 more to do, 0 done</h2>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+    props: ['nameApp']
 }
 </script>
 

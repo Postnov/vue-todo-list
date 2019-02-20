@@ -1,6 +1,7 @@
 <template>
     <div class="todo-app">
-        <AppHeader />
+        <AppHeader
+            :nameApp="nameApp"/>
         <div class="top-panel d-flex">
             <SearchPanel
                 @search="searchItems"/>
@@ -29,8 +30,8 @@ import TodoList from './TodoList.vue';
 export default {
     name: 'App',
     data() {
-
         return {
+            nameApp: 'Todo App',
             maxId: 10,
             items: [
                 {label: 'Make cofee', done: false, important: false, id: 1},
