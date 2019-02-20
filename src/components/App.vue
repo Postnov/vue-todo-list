@@ -114,8 +114,6 @@ export default {
     },
     mounted() {
         this.filterItems = this.items;
-        this.doneLength = this.items.filter((el) => el.done).length,
-        this.todoLength = this.items.length - this.doneLength;
     },
     components: {
         AddTodo,
