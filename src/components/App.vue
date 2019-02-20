@@ -42,8 +42,6 @@ export default {
             ],
             filterItems: [],
             filter: 'all',
-            todoLength: 0,
-            doneLength: 0
         }
     },
     methods: {
@@ -103,9 +101,14 @@ export default {
 
 
     },
-    updated() {
-        this.doneLength = this.items.filter((el) => el.done).length,
-        this.todoLength = this.items.length - this.doneLength;
+    computed: {
+        doneLength() {
+            return this.items.filter((el) => el.done).length;
+        },
+        todoLength() {
+            let doneLenth = this.items.filter((el) => el.done).length;
+            return this.items.length - this.doneLength;
+        }
     },
     mounted() {
         this.filterItems = this.items;
