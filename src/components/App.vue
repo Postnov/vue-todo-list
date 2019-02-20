@@ -2,11 +2,12 @@
     <div class="todo-app">
         <AppHeader />
         <div class="top-panel d-flex">
-            <SearchPanel />
+            <SearchPanel
+                @search="searchItems"/>
             <FilterButtons />
         </div>
         <TodoList
-            :items="items"
+            :items="filterItems"
             @onDone="onDone"
             @onImportant="onImportant"
             @onDelete="onDelete"
@@ -26,13 +27,15 @@ import TodoList from './TodoList.vue';
 export default {
     name: 'App',
     data() {
+
         return {
             maxId: 10,
             items: [
                 {label: 'Make cofee', done: false, important: false, id: 1},
                 {label: 'Learn Vue', done: false, important: false, id: 2},
                 {label: 'Make awesome app', done: false, important: false, id: 3}
-            ]
+            ],
+            filterItems: []
         }
     },
     methods: {
@@ -60,7 +63,18 @@ export default {
                 important: false,
                 id: this.maxId++
             })
+        },
+
+        searchItems(query) {
+            this.filterItems = this.items.filter((el) => {
+                return el.label.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            })
         }
+
+
+    },
+    mounted() {
+        this.filterItems = this.items;
     },
     components: {
         AddTodo,

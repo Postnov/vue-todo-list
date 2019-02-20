@@ -1,10 +1,20 @@
 <template>
-    <input type="text" class="form-control search-panel" placeholder="Search">
+    <input
+        type="text"
+        class="form-control search-panel"
+        placeholder="Search"
+        v-model="query"
+        @keyup="$emit('search', query)">
 </template>
 
 <script>
 export default {
-    name: 'SearchPanel'
+    name: 'SearchPanel',
+    data() {
+        return {
+            query: ''
+        }
+    }
 }
 </script>
 
