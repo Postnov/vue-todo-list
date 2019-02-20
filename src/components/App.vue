@@ -64,7 +64,9 @@ export default {
         onDelete(id) {
             this.items = this.items.filter((el) => {
                 return el.id !== id;
-            })
+            });
+
+            this.filterItem(this.filter);
         },
         addItem(label) {
             this.items.push({
