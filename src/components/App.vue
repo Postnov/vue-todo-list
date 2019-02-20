@@ -5,8 +5,21 @@
 </template>
 
 <script>
-export default {
+import AddTodo from './AddTodo.vue';
+import AppHeader from './AppHeader.vue';
+import FilterButtons from './FilterButtons.vue';
+import SearchPanel from './SearchPanel.vue';
+import TodoList from './TodoList.vue';
 
+export default {
+    name: 'App',
+    components: {
+        AddTodo,
+        AppHeader,
+        FilterButtons,
+        SearchPanel,
+        TodoList
+    }
 }
 </script>
 
