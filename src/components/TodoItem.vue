@@ -1,6 +1,6 @@
 <template>
     <span class="todo-item">
-        <span class="todo-item-label">Drink cofee</span>
+        <span class="todo-item-label">{{ item.label }}</span>
         <button
             type="button" class="btn btn-outline-success btn-sm float-right">
             <i class="fa fa-exclamation"></i>
@@ -14,7 +14,8 @@
 
 <script>
 export default {
-    name: 'TodoItem'
+    name: 'TodoItem',
+    props: ['item'],
 }
 </script>
 
