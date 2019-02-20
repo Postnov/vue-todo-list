@@ -1,6 +1,8 @@
 <template>
-    <span class="todo-item">
-        <span class="todo-item-label">{{ item.label }}</span>
+    <span class="todo-item" :class="{'done': item.done}">
+        <span
+            @click="$emit('onDone', item.id)"
+            class="todo-item-label">{{ item.label }}</span>
         <button
             type="button" class="btn btn-outline-success btn-sm float-right">
             <i class="fa fa-exclamation"></i>
@@ -15,7 +17,7 @@
 <script>
 export default {
     name: 'TodoItem',
-    props: ['item'],
+    props: ['item']
 }
 </script>
 

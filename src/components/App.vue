@@ -5,7 +5,10 @@
             <SearchPanel />
             <FilterButtons />
         </div>
-        <TodoList :items="items" />
+        <TodoList
+            :items="items"
+            @onDone="onDone"
+        />
         <AddTodo />
     </div>
 </template>
@@ -27,6 +30,14 @@ export default {
                 {label: 'Learn Vue', done: false, important: false, id: 2},
                 {label: 'Make awesome app', done: false, important: false, id: 3}
             ]
+        }
+    },
+    methods: {
+        onDone(id) {
+            this.items = this.items.map((el) => {
+                if (el.id === id) el.done = !el.done;
+                return el;
+            })
         }
     },
     components: {
