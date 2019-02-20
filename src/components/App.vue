@@ -4,7 +4,9 @@
         <div class="top-panel d-flex">
             <SearchPanel
                 @search="searchItems"/>
-            <FilterButtons />
+            <FilterButtons
+                :filter="filter"
+                @filterItem="filterItem"/>
         </div>
         <TodoList
             :items="filterItems"
@@ -35,7 +37,8 @@ export default {
                 {label: 'Learn Vue', done: false, important: false, id: 2},
                 {label: 'Make awesome app', done: false, important: false, id: 3}
             ],
-            filterItems: []
+            filterItems: [],
+            filter: 'all'
         }
     },
     methods: {
@@ -69,6 +72,22 @@ export default {
             this.filterItems = this.items.filter((el) => {
                 return el.label.toLowerCase().indexOf(query.toLowerCase()) !== -1;
             })
+        },
+
+        filterItem(type) {
+            this.filter = type;
+
+            if (type === 'all') {
+                this.filterItems = this.items;
+            }else if (type === 'active') {
+                this.filterItems = this.items.filter((el) => {
+                    return el.done === false
+                });
+            }else if (type === 'done') {
+                this.filterItems = this.items.filter((el) => {
+                    return el.done === true
+                });
+            }
         }
 
 
