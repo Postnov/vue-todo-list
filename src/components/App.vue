@@ -8,6 +8,7 @@
         <TodoList
             :items="items"
             @onDone="onDone"
+            @onImportant="onImportant"
         />
         <AddTodo />
     </div>
@@ -36,6 +37,12 @@ export default {
         onDone(id) {
             this.items = this.items.map((el) => {
                 if (el.id === id) el.done = !el.done;
+                return el;
+            })
+        },
+        onImportant(id) {
+            this.items = this.items.map((el) => {
+                if (el.id === id) el.important = !el.important;
                 return el;
             })
         }

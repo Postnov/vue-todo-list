@@ -1,14 +1,18 @@
 <template>
-    <span class="todo-item" :class="{'done': item.done}">
+    <span
+        class="todo-item"
+        :class="{'done': item.done, 'important': item.important}">
         <span
             @click="$emit('onDone', item.id)"
             class="todo-item-label">{{ item.label }}</span>
         <button
+            @click="$emit('onImportant', item.id)"
             type="button" class="btn btn-outline-success btn-sm float-right">
             <i class="fa fa-exclamation"></i>
         </button>
         <button
-            type="button" class="btn btn-outline-danger btn-sm float-right"><i class="fa fa-trash-o"></i>
+            type="button" class="btn btn-outline-danger btn-sm float-right">
+            <i class="fa fa-trash-o"></i>
         </button>
     </span>
 </template>

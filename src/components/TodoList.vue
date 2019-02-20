@@ -3,7 +3,8 @@
         <li class="list-group-item" v-for="item in items" :key="item.id">
             <TodoItem
             :item="item"
-            @onDone="onDone"/>
+            @onDone="onDone"
+            @onImportant="onImportant"/>
         </li>
     </ul>
 </template>
@@ -16,6 +17,9 @@ export default {
     methods: {
         onDone(id) {
             this.$emit('onDone', id);
+        },
+        onImportant(id) {
+            this.$emit('onImportant', id);
         }
     },
     components: {
