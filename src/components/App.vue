@@ -1,7 +1,9 @@
 <template>
     <div class="todo-app">
         <AppHeader
-            :nameApp="nameApp"/>
+            :nameApp="nameApp"
+            :done="doneLength"
+            :toDo="todoLength"/>
         <div class="top-panel d-flex">
             <SearchPanel
                 @search="searchItems"/>
@@ -39,7 +41,9 @@ export default {
                 {label: 'Make awesome app', done: false, important: false, id: 3}
             ],
             filterItems: [],
-            filter: 'all'
+            filter: 'all',
+            todoLength: 0,
+            doneLength: 0
         }
     },
     methods: {
@@ -99,8 +103,14 @@ export default {
 
 
     },
+    updated() {
+        this.doneLength = this.items.filter((el) => el.done).length,
+        this.todoLength = this.items.length - this.doneLength;
+    },
     mounted() {
         this.filterItems = this.items;
+        this.doneLength = this.items.filter((el) => el.done).length,
+        this.todoLength = this.items.length - this.doneLength;
     },
     components: {
         AddTodo,

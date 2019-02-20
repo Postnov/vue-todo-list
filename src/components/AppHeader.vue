@@ -1,14 +1,14 @@
 <template>
     <div class="app-header d-flex">
         <h1>{{ nameApp }}</h1>
-        <h2>3 more to do, 0 done</h2>
+        <h2>{{ toDo }} more to do, {{done}} done</h2>
     </div>
 </template>
 
 <script>
 export default {
     name: 'AppHeader',
-    props: ['nameApp']
+    props: ['nameApp', 'toDo', 'done']
 }
 </script>
 
